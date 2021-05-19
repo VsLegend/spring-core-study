@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-core-study
+
+# 所有日志级别，可以用全类型限定某个类的日志级别
+logging:
+  level:
+    root: debug

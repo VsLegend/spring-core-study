@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    // spring boot 插件，此处的插件如果当前项目没有依赖，需要导入依赖才可用
+    id 'org.springframework.boot' version('2.4.5')
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'io.spring.dependency-management'
+
+// 指定java版本
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    // 本地仓库 用以缓存
+    mavenLocal()
+    // 第三方仓库
+    maven { url "https://mirrors.huaweicloud.com/repository/maven/" }
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // spring boot集成
+    implementation 'org.springframework.boot:spring-boot-gradle-plugin:2.4.5'
+    implementation 'org.springframework.boot:spring-boot-starter:2.4.5'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.4.5'
+    // spring boot 配置元数据
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.4.5'
+    // swagger3.0
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    // Lombok
+    compileOnly('org.projectlombok:lombok:1.18.12')
+    annotationProcessor('org.projectlombok:lombok:1.18.2')
+}
